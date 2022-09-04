@@ -10,7 +10,7 @@
 基本の写真です。  
 ![base](https://user-images.githubusercontent.com/12496951/188319350-bad6953b-2771-453f-875c-6e6ba92938e6.PNG)  
 
-近傍8点を用いたラプラシアンフィルタです。エッジ強調みたな感じ?  
+近傍8点を用いたラプラシアンフィルタです。エッジ強調みたいな感じ?  
 ![laplacian](https://user-images.githubusercontent.com/12496951/188319352-718aaad8-b15b-4f5e-a1a4-67ebb69b8746.PNG)  
 
 平滑化フィルタです。  
