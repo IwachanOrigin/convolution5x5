@@ -4,12 +4,24 @@
 #include <QGraphicsPixmapItem>
 #include <QColor>
 
+#define SMOOTH 1
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
     ui.graphicsView->setScene(&scene);
     QImage inputImg(":/MainWindow/test.jpg");
+#if SMOOTH
+    float coef[5][5] =
+        {
+              { 0.002, 0.036, 0.048, 0.036,  0.002}
+            , { 0.036, 0.057, 0.057, 0.057,  0.036}
+            , { 0.048, 0.057, 0.057, 0.057,  0.048}
+            , { 0.036, 0.057, 0.057, 0.057,  0.036}
+            , { 0.002, 0.036, 0.048, 0.036,  0.002}
+        };
+#else
     float coef[5][5] =
         {
               { 0,  0,  0,  0,  0}
@@ -18,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
             , { 0, -1, -1, -1,  0}
             , { 0,  0,  0,  0,  0}
         };
+#endif
     QImage rtnImg = this->convolution5x5(inputImg, coef);
     QGraphicsPixmapItem *image_item = new QGraphicsPixmapItem(QPixmap::fromImage(rtnImg));
     scene.addItem(image_item);
